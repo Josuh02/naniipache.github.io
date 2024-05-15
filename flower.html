@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERES UNA LINDA</title>
+  <link rel="shortcut icon" href="cora.png" type="image/x-icon">
+  <style>
+    body {
+      background-color: #0f0f1f;
+      text-align: center;
+      padding-top: 100px;
+      font-family: Arial, sans-serif;
+      background-image: radial-gradient(circle, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 100%), radial-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 2px), radial-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 2px);
+      background-size: cover, 60px 60px, 60px 60px;
+      background-position: center, 30px 30px, 0 0;
+    }
+    h1 {
+      color: #ffffff;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 40px;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 8px;
+      border: none;
+      background-color: #ff6f61;
+      color: white;
+      margin: 20px 40px;
+      transition: transform 0.2s ease;
+    }
+    .button:hover {
+      transform: scale(1.05);
+    }
+    .hidden {
+      display: none;
+    }
+    #message {
+      background-color: rgba(26, 40, 48, 0.8); /* Fondo del mensaje */
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: 0 auto;
+      margin-top: 10px;
+      font-weight: bold; /* Negrita */
+      color: white;
+      font-size: 30px; /* Tamaño de fuente */
+    }
+    #ojitoss {
+      width: 350px;
+      margin-top: 90px;
+    }
+    #textBesideImage {
+      color: #FFD700;
+      font-size: 30px; /* Tamaño de fuente */
+      font-weight: bold; /* Negrita */
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Eres una preciosaaaa mi vida, sabias?</h1>
+
+  <button class="button" id="siButton">Sí</button>
+  <button class="button" id="noButton">No</button>
+
+  <div id="message" class="hidden">
+    <p>Tu existencia ilumina mi vida💕.</p>
+  </div>
+
+  <div>
+    <img src="nanipache.jpg" id="ojitoss" alt="Ojitoss">
+    <p id="textBesideImage">Mira no mas qué bonitaaaa</p>
+  </div>
+  <script>
+    const siButton = document.getElementById('siButton');
+    const noButton = document.getElementById('noButton');
+    const message = document.getElementById('message');
+
+    // Función para mover el botón "No" de forma aleatoria
+    function moveButton() {
+      const maxX = window.innerWidth - noButton.offsetWidth;
+      const maxY = window.innerHeight - noButton.offsetHeight;
+      const newX = Math.floor(Math.random() * maxX);
+      const newY = Math.floor(Math.random() * maxY);
+      noButton.style.position = 'absolute';
+      noButton.style.left = newX + 'px';
+      noButton.style.top = newY + 'px';
+    }
+
+    // Evento para mover el botón "No" al acercar el mouse
+    document.addEventListener('mousemove', function(event) {
+      const mouseX = event.clientX;
+      const mouseY = event.clientY;
+      const buttonX = noButton.offsetLeft;
+      const buttonY = noButton.offsetTop;
+      const distance = Math.sqrt(Math.pow(mouseX - buttonX, 2) + Math.pow(mouseY - buttonY, 2));
+      if (distance < 100) { // Cambia el valor para ajustar la distancia de activación del boton no
+        moveButton();
+      }
+    });
+
+    // Evento al hacer clic en el botón "Sí"
+    siButton.addEventListener('click', function() {
+      message.classList.remove('hidden');
+      setTimeout(function() {
+        message.classList.add('hidden');
+        // Actualiza a florcita después de cerrar el mensaje
+        window.location.href = 'florcitas.html';
+      }, 3000); // Oculta el mensaje después de 3 segundos
+    });
+  </script>
+</body>
+</html>
